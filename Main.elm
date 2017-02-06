@@ -3,19 +3,17 @@
 
 import Html exposing (button, text)
 import Html.Events exposing (onClick)
-import Http
 import Json.Decode exposing (decodeString, list, string)
 
 type Msg
-  = ListReady (Result Http.Error String)
-  | BlowUp
+  = BlowUp
 
 main =
   Html.program { init = init, update = update, view = view, subscriptions = subs }
 
 init =
-  -- Change to "smaller.json" and it will not break
-  ( [], Http.send ListReady <| Http.getString "bigger.json" )
+  -- 7000 hit's the call stack size limit in Chrome, 5000 don't
+  ( decodeList (longJsonList 7000), Cmd.none )
 
 decodeList s =
   let
@@ -27,14 +25,12 @@ decodeList s =
       Err _ ->
         []
 
+longJsonList : Int -> String
+longJsonList n =
+    "[" ++ String.repeat n "\"\"," ++ "\"\"]"
+
 update msg model =
   case msg of
-    ListReady (Ok s) ->
-      ( decodeList s, Cmd.none )
-
-    ListReady (Err _) ->
-      ( model, Cmd.none )
-    
     BlowUp ->
       ( model, Cmd.none )
 
