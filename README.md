@@ -7,4 +7,4 @@ Crashes on Google Chrome (55.0.2883.95, 64-bit, macOS). Firefox and Safari seems
 Start with **elm-reactor** and launch your browser to test.
 
 ![Maximum call stack size exceeded]
-(file://maximum-call-stack-size-exceeded.png)
+(https://raw.githubusercontent.com/johannesl/elm-issue1521/master/maximum-call-stack-size-exceeded.png)
