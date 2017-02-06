@@ -5,3 +5,6 @@ Running elm-reactor with a list in the model of ~7000 items crashes the Elm runt
 Crashes on Google Chrome (55.0.2883.95, 64-bit, macOS). Firefox and Safari seems to survive.
 
 Start with **elm-reactor** and launch your browser to test.
+
+![Maximum call stack size exceeded]
+(file://maximum-call-stack-size-exceeded.png)
